@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>App Pojištěnci</h1>
+    <h2>Seznam pojištěnců</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Jméno a příjmení</th>
+                <th>Telefon</th>
+                <th>Věk</th>
+            </tr>
+        </thead>
+        <tbody id="pojistenci-seznam">
+
+        </tbody>
+    </table>
+
+    <br>
+
+    <h2>Nový pojištěnec</h2>
+    <table class="imput-table"> 
+        <tr>
+            <td><strong>Jméno </strong><input id="input-jmeno" type="text"></td>
+            <td><strong>Příjmení </strong><input id="input-prijmeni" type="text"></td>
+        </tr>
+        <tr>
+            <td><strong>Věk </strong><input id="input-vek" type="number"></td>
+            <td><strong>Telefonní číslo </strong><input id="input-tel" type="number"></td>
+        </tr>
+        
+    </table>
+        <br>
+        <button id="button-ulozit">Uložit</button>
+
+
+    <script src="js/Kartoteka.js"></script>
+    <script src="js/Pojistenec.js"></script>
+    <script src="js/obsluha.js"></script>
+</body>
+
+</html>

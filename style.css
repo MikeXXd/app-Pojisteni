@@ -1,0 +1,19 @@
+body {
+    margin: 0 auto;
+    width: 800px;
+}
+
+table, th, td {
+    border: solid 1px black;
+}
+
+table {
+    width: 600px;
+
+    text-align: left;
+}
+
+.imput-table, .imput-table td{
+    width: 400px;
+    border: none;
+}
