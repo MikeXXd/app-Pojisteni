@@ -3,7 +3,8 @@
 class Kartoteka {
 
     constructor() {
-        this.pojistenci = [];
+        const zaznamyZeStorage = localStorage.getItem("pojistenci"); // stahování záznamů, pokud záznamy neexistují, bude mít proměnná hodnotu null
+        this.pojistenci = zaznamyZeStorage ? JSON.parse(zaznamyZeStorage) : []; /* ternálním operátorem vybereme záznamy, pokud žádné  v lS nejsou = null, načte se prázdné pole */
 
         this.jmenoInput = document.getElementById("input-jmeno");
         this.prijmeniInput = document.getElementById("input-prijmeni");
@@ -18,7 +19,8 @@ class Kartoteka {
     obsluhaUdalosti() {
         this.ulozitButton.onclick = () => {
             const pojistenec = new Pojistenec(this.jmenoInput.value, this.prijmeniInput.value, this.vekInput.value, this.telefonInput.value);
-            this.pojistenci.push(pojistenec);
+            this.pojistenci.push(pojistenec); // na konec pole pojistenci se přidá nový objekt pojistenec
+            localStorage.setItem("pojistenci", JSON.stringify(this.pojistenci)); /* nově  */
             this.vypisZaznamy();
         };
     }
