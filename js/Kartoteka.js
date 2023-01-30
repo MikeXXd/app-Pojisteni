@@ -12,6 +12,7 @@ class Kartoteka {
         this.telefonInput = document.getElementById("input-tel");
         this.ulozitButton = document.getElementById("button-ulozit");
         this.vypisPojistence = document.getElementById("pojistenci-seznam");
+        this.clearing = document.getElementsByClassName('clearing');
 
         this.obsluhaUdalosti();
     }
@@ -21,17 +22,20 @@ class Kartoteka {
             const pojistenec = new Pojistenec(this.jmenoInput.value, this.prijmeniInput.value, this.vekInput.value, this.telefonInput.value);
             this.pojistenci.push(pojistenec); // na konec pole pojistenci se přidá nový objekt pojistenec
             localStorage.setItem("pojistenci", JSON.stringify(this.pojistenci)); /* nově  */
+            this.jmenoInput.value = '';
+            this.prijmeniInput.value = '';
+            this.vekInput.value = '';
+            this.telefonInput.value = '';
             this.vypisZaznamy();
         };
     }
 
     vypisZaznamy() {
-        const tr = document.createElement("tr");
-        this.vypisPojistence.appendChild(tr);
-        tr.innerHTML = "";
+        let elVypis = this.vypisPojistence;
+        elVypis.innerHTML = '';
         for (let i = 0; i < this.pojistenci.length; i++) {
-            let zapis = this.pojistenci[i];  
-            tr.innerHTML = `<td>${zapis.jmeno} ${zapis.prijmeni}</td><td>${zapis.tel}</td><td>${zapis.vek}</td>`;  
+            let zapis = this.pojistenci[i]
+            elVypis.innerHTML += `<tr><td>${zapis.jmeno} ${zapis.prijmeni}</td><td>${zapis.tel}</td><td>${zapis.vek}</td></tr>`;  
         }
     }
 
