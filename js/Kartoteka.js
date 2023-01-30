@@ -28,7 +28,7 @@ class Kartoteka {
     vypisZaznamy() {
         const tr = document.createElement("tr");
         this.vypisPojistence.appendChild(tr);
-        tr.innerHTML = ""
+        tr.innerHTML = "";
         for (let i = 0; i < this.pojistenci.length; i++) {
             let zapis = this.pojistenci[i];  
             tr.innerHTML = `<td>${zapis.jmeno} ${zapis.prijmeni}</td><td>${zapis.tel}</td><td>${zapis.vek}</td>`;  
