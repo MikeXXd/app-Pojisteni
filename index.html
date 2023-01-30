@@ -11,12 +11,13 @@
     <h1>App Pojištěnci</h1>
     <h2>Seznam pojištěnců</h2>
 
-    <table>
-        <thead>
+    <table >
+        <thead id="pojistenci-seznam-th">
             <tr>
-                <th>Jméno a příjmení</th>
-                <th>Telefon</th>
-                <th>Věk</th>
+                <th id="text-left">Jméno a Příjmení</th>
+                <th>telefon</th>
+                <th>věk</th>
+                <th>datum vstupu</th>
             </tr>
         </thead>
         <tbody id="pojistenci-seznam">
@@ -33,7 +34,7 @@
             <td><strong>Příjmení </strong><input id="input-prijmeni" type="text" value=''></td>
         </tr>
         <tr>
-            <td><strong>Věk </strong><input id="input-vek" type="number" value=''></td>
+            <td><strong>Datum narození</strong><input id="input-vek" type="date" value=''></td>
             <td><strong>Telefonní číslo </strong><input id="input-tel" type="number" value=''></td>
         </tr>
 

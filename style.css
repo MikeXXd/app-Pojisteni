@@ -1,15 +1,30 @@
 body {
     margin: 0 auto;
     width: 800px;
+    color: black;
+    
 }
 
-table, th, td {
-    border: solid 1px black;
-}
-
+/* table styling --------------------------------- */
 table {
+    border: solid 2px black;
     width: 600px;
+    border-collapse: collapse;
+}
 
+td {
+    padding: 2px 5px;
+}
+
+ th, td {
+    border: solid 1px grey;
+    color: black;
+}
+
+
+
+#pojistenci-seznam-th tr, #pojistenci-seznam-th td {
+    border: solid 2px black;
     text-align: left;
 }
 
