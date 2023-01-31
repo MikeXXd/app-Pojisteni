@@ -1,34 +1,105 @@
+/* Color pallete */
+.new0 { color: #444441; } /* písmo a tabulka-border */
+.new1 { color: #999993; } /* tabulka-inner */
+.new2 { color: #Eeeee4; } /* background */
+.new3 { color: #2596be; } /* header-background */
+.nav4 { color: #b5c576; } /* footer-background */
+
+
+
 body {
-    margin: 0 auto;
-    width: 800px;
-    color: black;
+    margin: 0;
+    color: #444441;
+    background-color: #Eeeee4;; 
+    min-height: 100vh;
+
+}
+
+header {
+    background-color: #2596be; ;
+    
+    min-height: 100px;
     
 }
 
-/* table styling --------------------------------- */
-table {
-    border: solid 2px black;
-    width: 600px;
-    border-collapse: collapse;
+header div {
+    margin: 0 auto;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
 }
 
-td {
-    padding: 2px 5px;
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+
+
+}
+
+header li {
+    margin: auto 15px; 
+}
+
+section {
+    max-width: 800px;
+    margin: 0 auto;
+    flex: 1;
+}
+
+input {
+    background-color: #Eeeee4;;
+}
+#button-ulozit {
+    background-color: #4CABA6;
+}
+nav li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #Eeeee4;
+    font-weight: 900;
+    font-size: 1.2em;
+}
+/* table styling --------------------------------- */
+table {
+    border: solid 3px #444441;
+    width: 100%;
+    border-collapse: collapse;
 }
 
  th, td {
     border: solid 1px grey;
-    color: black;
+    padding: 2px 5px;
+    
 }
 
 
 
 #pojistenci-seznam-th tr, #pojistenci-seznam-th td {
-    border: solid 2px black;
+    border: solid 2px #444441;
     text-align: left;
 }
 
 .imput-table, .imput-table td{
-    width: 400px;
+    max-width: 400px;
     border: none;
 }
+
+footer {
+    position: absolute; /* přebráno ale nepochopeno - drží footer dole*/
+    right: 0; /* přebráno ale nepochopeno - drží footer dole*/
+    bottom: 0; /* přebráno ale nepochopeno - drží footer dole*/
+    left: 0; /* přebráno ale nepochopeno - drží footer dole */
+    background-color: #b5c576;
+    min-height: 50px;
+    margin-top: 10px;
+    text-align: center;
+}
+ footer p {
+    padding: 5px;
+ }
