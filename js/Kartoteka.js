@@ -34,8 +34,31 @@ class Kartoteka {
         elVypis.innerHTML = '';
         for (let i = 0; i < this.pojistenci.length; i++) {
             let zapis = this.pojistenci[i]
-            elVypis.innerHTML += `<tr><td>${zapis.jmeno} ${zapis.prijmeni}</td><td>${zapis.tel}</td><td>${zapis.vek}</td><td>${zapis.datumVstupu}</td></tr>`;  
+            elVypis.innerHTML += `<tr><td>${zapis.jmeno} ${zapis.prijmeni}</td><td>${zapis.tel}</td><td>${this.ageCalculator(zapis.vek)}</td><td>${zapis.datumVstupu}</td></tr>`;  
         }
     }
+
+    ageCalculator(datumNar) {
+        let userinput = datumNar;
+        let datNar = new Date(userinput);
+        if(userinput == null || userinput == '') {
+          return "nezadán!"; 
+        } else {
+        
+        //výpočet rozdílů času v milisekundach
+        let mesiceRozdil = Date.now() - datNar.getTime();
+        console.log("Date.now: " + Date.now() + " - datNar.getTime: " + datNar.getTime() + " = mesiceRozdil: " +  mesiceRozdil);
+        //formatování datumu
+        let age_dt = new Date(mesiceRozdil); 
+        console.log(age_dt);
+        //extrakce roku 
+        let year = age_dt.getUTCFullYear();
+        console.log(year);
+        //dopočet věku - zrozeni křemíku :-)
+        let age = Math.abs(year - 1970);
+        
+        //display the calculated age
+        return age
+        }}
 
 }
