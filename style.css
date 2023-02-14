@@ -6,15 +6,6 @@
 .nav4 { color: #b5c576; } /* footer-background */
 .nav5 { color: #b0b015; } /* alternative to table and form main text */
 
-
-.bobyHome { /* pro nastavení body v index.html, zbytek stranek má přikurtovaný footer s .fixed-bottom*/
-    background-color: #Eeeee4;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
 .bg-nav {
     background-color:  #2596be;
 }

@@ -1,10 +1,10 @@
     class Pojistenec {
 
-    constructor(jmeno, prijmeni, vek, tel, date = new Date().toLocaleString()) {
+    constructor(jmeno, prijmeni, vek, tel) {
         this.jmeno = jmeno;
         this.prijmeni = prijmeni;
         this.vek = vek;
         this.tel = tel;     
-        this.datumVstupu = date;
+        this.datumVstupu = new Date().toLocaleString();
     }
 }
