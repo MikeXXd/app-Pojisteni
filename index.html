@@ -5,60 +5,109 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    
+<link rel="stylesheet" href="./bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div>
-            <h1>App Pojištěnci</h1>
-        
-            <nav>
-                <ul>
-                    <li><a href="">Klienti</a></li>
-                    <li><a href="">o aplikaci</a></li>
-                    <li><a href="">nastavení</a></li>
+<body class="bodyHome">
+    <header class="heather_nav">  <!-- navigační lišta---------------------------------------------------------------------------->
+        <nav class="navbar navbar-expand-md navbar-dark bg-nav fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand fw-bolder me-5" href="./index.html">App.Pojištení</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active border-top" aria-current="page" href="./index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./oAplikaci.html">O applikaci</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="./kontakt.html">Kontakt</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Pro version <sup class="">již brzy</sup></a>
+                  </li>
                 </ul>
-            </nav>
+              </div>
+            </div>
+        </nav>
+    </header> <!-- KONEC navigační lišta--------------------------------------->
+
+    <section class="container-fluid mb-5 " > <!-- Tělo stránky--------------------------------------------------------->
+        <div class="row"><!-- tabulka seznam pojištěnců---------------------------------------------------------->
+            <div class="col-lg-2 col-md-1 col-sm"><!-- vymezovací sloupec start--->
+            </div>
+            <div class="col-md-10 col-lg-8"> <!-- hlavní sloupec --->
+                <table class="table table-hover table-sm caption-top table-responsive-lg raw">
+                  <caption class="fw-bold ms-2"><h5>Seznam pojištěnců</h5></caption>
+                  <thead id="pojistenci-seznam-th">
+                    <tr>
+                      <th>Jméno a Příjmení</th>
+                      <th>telefon</th>
+                      <th>věk</th>
+                      <th>v systému</th>
+                    </tr>
+                  </thead>
+                  <tbody id="pojistenci-seznam">
+                  </tbody>
+                </table>
+            </div>
+            <div class="col-lg-2 col-md-1 col-sm"><!-- vymezovací sloupec end--->
+            </div>
+        </div> <!-- KONEC tabulka seznam pojištěnců------------------------------->
+        
+        <div class="row"> <!-- formulář nový pojištěnec---------------------------------------------------------->
+          <div class="col-xl-4 col-lg-3 col-md-2 col-sm"><!-- vymezovací sloupec pro formulář sloupec start--->
+          </div>
+
+          <div class="col-xl-4 col-md-8 col-lg-6"> <!-- hlavní sloupec pro formulář a tlačítko--->
+            <form class=""> 
+              <legend><h5>Nový pojištěnec</h5></legend>
+
+                <div class="row"> <!-- vstupy do formuláře řádek 1--->
+                    <div class="col-md-6 col-sm">
+                      <label for="input-jmeno" class="form-label">Jméno</label>                     
+                      <input type="text" class="form-control" id="input-jmeno" placeholder="">
+                    </div>
+                    <div class="col-md-6 col-sm">
+                      <label for="input-prijmeni" class="form-label">Príjmení</label>                     
+                      <input type="text" class="form-control" id="input-prijmeni" placeholder="">
+                    </div>                 
+                </div>
+
+                <div class="row"> <!-- vstupy do formuláře řádek 2--->
+                  <div class="col-md-6 col-sm">
+                    <label for="input-vek" class="form-label">Datum narození</label>                     
+                    <input type="date" class="form-control" id="input-vek" placeholder="">
+                  </div>
+                  <div class="col-md-6 col-sm">
+                    <label for="input-tel" class="form-label">Telefonní číslo</label>                     
+                    <input type="number" class="form-control" id="input-tel" placeholder="">
+                  </div>                 
+              </div>   
+              <div class="m-4 text-center">
+                <button class="btn btn-outline-success ps-5 pe-5 fw-bolder button-colors" id="button-ulozit">Uložit pojištěnce</button>  
+              </div>          
+                                
+              </div> 
+            </form>
+    
+                
+
+            </div> 
+
+          <div class="col-xl-4 col-lg-3 col-md-2 col-sm"> <!-- vymezovací sloupec pro formulář sloupec end--->
+          </div>
         </div>
-    </header>
-    <section>
-    <h2>Seznam pojištěnců</h2>
 
-    <table >
-        <thead id="pojistenci-seznam-th">
-            <tr>
-                <th id="text-left">Jméno a Příjmení</th>
-                <th>telefon</th>
-                <th>věk</th>
-                <th>v systému</th>
-            </tr>
-        </thead>
-
-        <tbody id="pojistenci-seznam">
-        </tbody>
-    </table>
-
-
-
-        <h2>Nový pojištěnec</h2>
-    <table class="imput-table"> 
-            <tr>
-                <td><strong>Jméno </strong><input id="input-jmeno" type="text" value=""></td>
-                <td><strong>Příjmení </strong><input id="input-prijmeni" type="text" value=''></td>
-            </tr>
-            <tr>
-                <td><strong>Datum narození</strong><input id="input-vek" type="date" value=''></td>
-                <td><strong>Telefonní číslo </strong><input id="input-tel" type="number" value=''></td>
-            </tr>
-
-    </table>
-
-
-
-        <button id="button-ulozit">Uložit</button>
+        
     </section>
-    <footer>
-        <p>Created by &#169 MikeXd</p>
+    <footer class="text-light fw-lighter pt-sm-2 d-flex justify-content-center ">
+        <p class="mb-0 mb-sm-3">Created by &#169 MikeXd - 2023</p>
     </footer>
 
 
@@ -66,6 +115,7 @@
 <script src="js/Kartoteka.js"></script>
 <script src="js/Pojistenec.js"></script>
 <script src="js/obsluha.js"></script>  
+<script src="./bootstrap-5.0.2-dist/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
 </body>
 
 </html>

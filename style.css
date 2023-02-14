@@ -4,102 +4,52 @@
 .new2 { color: #Eeeee4; } /* background */
 .new3 { color: #2596be; } /* header-background */
 .nav4 { color: #b5c576; } /* footer-background */
+.nav5 { color: #b0b015; } /* alternative to table and form main text */
 
 
-
-body {
-    margin: 0;
-    color: #444441;
-    background-color: #Eeeee4;; 
-    min-height: 100vh;
-
-}
-
-header {
-    background-color: #2596be; ;
-    
-    min-height: 100px;
-    
-}
-
-header div {
-    margin: 0 auto;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    max-width: 800px;
-}
-
-
-header ul {
+.bobyHome { /* pro nastavení body v index.html, zbytek stranek má přikurtovaný footer s .fixed-bottom*/
+    background-color: #Eeeee4;
     display: flex;
-    flex-direction: row;
-    justify-content:space-between;
-
-
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-header li {
-    margin: auto 15px; 
+.bg-nav {
+    background-color:  #2596be;
 }
 
-section {
-    max-width: 800px;
-    margin: 0 auto;
-    flex: 1;
+section, thead {
+    color:#444441 ;
 }
-
-input {
-    background-color: #Eeeee4;;
-}
-#button-ulozit {
-    background-color: #4CABA6;
-}
-nav li {
-    list-style-type: none;
-}
-
-a {
-    text-decoration: none;
-    color: #Eeeee4;
-    font-weight: 900;
-    font-size: 1.2em;
-}
-/* table styling --------------------------------- */
-table {
-    border: solid 3px #444441;
-    width: 100%;
-    border-collapse: collapse;
-}
-
- th, td {
-    border: solid 1px grey;
-    padding: 2px 5px;
-    
-}
-
-
-
-#pojistenci-seznam-th tr, #pojistenci-seznam-th td {
-    border: solid 2px #444441;
-    text-align: left;
-}
-
-.imput-table, .imput-table td{
-    max-width: 400px;
-    border: none;
-}
-
 footer {
-    position: absolute; /* přebráno ale nepochopeno - drží footer dole*/
-    right: 0; /* přebráno ale nepochopeno - drží footer dole*/
-    bottom: 0; /* přebráno ale nepochopeno - drží footer dole*/
-    left: 0; /* přebráno ale nepochopeno - drží footer dole */
     background-color: #b5c576;
-    min-height: 50px;
-    margin-top: 10px;
+}
+.bg-input {
+    background-color: #2596be ;
+}
+.heather_nav {
+    height: 4rem;
+}
+form legend{
     text-align: center;
 }
- footer p {
-    padding: 5px;
- }
+
+.button-colors {
+    border-color:#444441;
+    color: #444441;
+}
+.button-colors:hover {
+    border-color:#b5c576;
+}
+.button-colors:active {
+    border-color:#2596be;
+}
+
+
+.button-colors:hover {
+    background-color: #b5c576;
+}
+.button-colors:active {
+    background-color: #2596be;
+}
