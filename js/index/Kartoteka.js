@@ -12,11 +12,9 @@ class Kartoteka {
         this.telefonInput = document.getElementById("input-tel");
         this.ulozitButton = document.getElementById("button-ulozit");
         this.vypisPojistence = document.getElementById("pojistenci-seznam");
-        this.vymazatVseButton = document.getElementById("vymazat-zaznamy");
-        
 
         this.obsluhaUdalosti();
-        this.vymazatZaznamy();
+
     }
 
     obsluhaUdalosti() {
@@ -40,7 +38,7 @@ class Kartoteka {
                 this.telefonInput.value = '';
                 this.vypisZaznamy();
             }
-        };
+        }
     }
 
     vypisZaznamy() {
@@ -52,8 +50,6 @@ class Kartoteka {
             let capPrijmeni = zapis.prijmeni.replace(zapis.prijmeni[0], zapis.prijmeni[0].toUpperCase()); // Velké písmeno u příjmení
             
              elVypis.innerHTML += `<tr><td>${capJmeno} ${capPrijmeni}</td><td>${zapis.tel}</td><td>${this.ageCalculator(zapis.vek)}</td><td>${zapis.datumVstupu}</td><td><button class="btn btn-outline-light btn-sm">X</button></td></tr>`;  
-            
-		
         }
     }
 
@@ -63,34 +59,24 @@ class Kartoteka {
         if(userinput == null || userinput == '') {
           return "nezadán!"; 
         } else {
-        
-        //výpočet rozdílů času v milisekundach
-        let mesiceRozdil = Date.now() - datNar.getTime();
-        // console.log("Date.now: " + Date.now() + " - datNar.getTime: " + datNar.getTime() + " = mesiceRozdil: " +  mesiceRozdil);
-        //formatování datumu
-        let age_dt = new Date(mesiceRozdil); 
-        // console.log(age_dt);
-        //extrakce roku 
-        let year = age_dt.getUTCFullYear();
-        // console.log(year);
-        //dopočet věku - zrozeni křemíku :-)
-        let age = Math.abs(year - 1970);
-        
-        //display the calculated age
-        return age
-        }}
-
-    vymazatZaznamy() {
-        this.vymazatVseButton.onclick = () => {
-           if (confirm("Opravdu chceš vše vymazet?")) {
-            localStorage.clear();
-            this.vypisZaznamy();
-           }
-           else {
-            this.vypisZaznamy();
-           }
-            }   
+            //výpočet rozdílů času v milisekundach
+            let mesiceRozdil = Date.now() - datNar.getTime();
+            // console.log("Date.now: " + Date.now() + " - datNar.getTime: " + datNar.getTime() + " = mesiceRozdil: " +  mesiceRozdil);
+            //formatování datumu
+            let age_dt = new Date(mesiceRozdil); 
+            // console.log(age_dt);
+            //extrakce roku 
+            let year = age_dt.getUTCFullYear();
+            // console.log(year);
+            //dopočet věku - zrozeni křemíku :-)
+            let age = Math.abs(year - 1970);
+            
+            //display the calculated age
+            return age
         }
+    }
+
+
 }
     
 
