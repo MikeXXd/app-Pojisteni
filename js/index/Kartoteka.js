@@ -45,8 +45,26 @@ class Kartoteka {
                 
             
             }
-        };
+        }
+        document.addEventListener('click', e => {  /*přidá Eventy na button u každého pojištěnce */
+            if(e.target.matches(".myButton")) {
+                let btn = e.target
+                let index = parseInt(btn.getAttribute("data-index"));
+                this.vymazZaznam(index);
+            }
+        })
+//nefukční varianta, querySelectorAll nechce vidět .myButton, a getElementsByClassNode zase nejede kvůli forEach
+        // const dltBtn = document.querySelectorAll(".myButton");
+        // console.log(dltBtn);
+        // dltBtn.forEach(btn => {
+        //     btn.addEventListener('click', () => {
+        // let index = parseInt(btn.getAttribute("data-index"));
+        // this.vymazZaznam(index);
+        //     })
+        // })
     }
+
+
 
     vypisZaznamy() {
         let elVypis = this.vypisPojistence;
@@ -83,6 +101,13 @@ class Kartoteka {
             return age
         }}
 
+
+        vymazZaznam(m) {
+            console.log(m)
+            this.pojistenci.splice(m, 1);
+            localStorage.setItem("pojistenci", JSON.stringify(this.pojistenci));
+            this.vypisZaznamy();
+        }
     
 }
     
