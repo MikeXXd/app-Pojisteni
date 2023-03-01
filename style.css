@@ -44,3 +44,11 @@ form legend{
 .button-colors:active {
     background-color: #2596be;
 }
+#activacni-dlt-btn {
+    padding: 0;
+    width: 40px;
+}
+.myButton {
+    padding: 0;
+    width: 40px;
+}

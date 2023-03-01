@@ -12,47 +12,61 @@ class Kartoteka {
         this.telefonInput = document.getElementById("input-tel");
         this.ulozitButton = document.getElementById("button-ulozit");
         this.vypisPojistence = document.getElementById("pojistenci-seznam");
+        this.aktivacniDltBtn = document.getElementById("activacni-dlt-btn");
         
-
-
-        /* https://www.itnetwork.cz/javascript/oop/oop-diar-v-javascriptu-formatovani-a-mazani-zaznamu#:~:text=Mo%C5%BEn%C3%A1%20by%20v%C3%A1s,konkr%C3%A9tn%C3%AD%20polo%C5%BEku%20p%C5%99ed%C3%A1me. */
-
         this.obsluhaUdalosti();
-
-
     }
 
     obsluhaUdalosti() {
         this.ulozitButton.onclick = () => {
             if (this.jmenoInput.value.length < 1) {
-                alert("Prosím zadej jméno v délce minimálně 2 znaků");
+                alert("Zadej jméno v délce minimálně jednoho znaku");
             }
             if (this.prijmeniInput.value.length < 1) {
-                alert("Prosím zadej príjmení v délce minimálně 2 znaků");
+                alert("Zadej příjmení v délce minimálně jednoho znaku");
             }
             if (this.telefonInput.value.length < 1) {
-                alert("Prosím zadej telefonni číslo v délce minimálně 9 číslic");
+                alert("Zadej telefonni číslo");
             }
             else {
                 const pojistenec = new Pojistenec(this.jmenoInput.value, this.prijmeniInput.value, this.vekInput.value, this.telefonInput.value);
                 this.pojistenci.push(pojistenec); // na konec pole pojistenci se přidá nový objekt pojistenec
                 localStorage.setItem("pojistenci", JSON.stringify(this.pojistenci)); /* nově  */
-                this.jmenoInput.value = '';
-                this.prijmeniInput.value = '';
-                this.vekInput.value = '';
-                this.telefonInput.value = '';
+                // this.jmenoInput.value = '';
+                // this.prijmeniInput.value = '';
+                // this.vekInput.value = '';
+                // this.telefonInput.value = '';
                 this.vypisZaznamy();
                 
             
             }
         }
-        document.addEventListener('click', e => {  /*přidá Eventy na button u každého pojištěnce */
-            if(e.target.matches(".myButton")) {
+
+        this.aktivacniDltBtn.onclick = () => {
+            if (this.aktivacniDltBtn.innerText === "OFF") {
+                alert("Pozor, byla AKTIVOVÁNA tlačítka, mazání pojištěnců!!!");
+                this.aktivacniDltBtn.innerText = "ON !";
+                this.vypisZaznamy();
+            } else {
+                alert("Tlačítka mazání pojištěnců byla DEAKTIVOVÁNA");
+                this.aktivacniDltBtn.innerText = "OFF";
+                this.vypisZaznamy();
+            }
+        }
+
+        this.addGlobalEventListener('click', ".myButton", e => {  /*přidá Event smazat pojištěnce na button u každého pojištěnce */
                 let btn = e.target
                 let index = parseInt(btn.getAttribute("data-index"));
-                this.vymazZaznam(index);
+                const pojistenecKVymazani = this.pojistenci[index] 
+                if(confirm("Opravdu chceš vymazat pojištěnce " + pojistenecKVymazani.prijmeni + " " + pojistenecKVymazani.jmeno + " ?")) {
+                    this.vymazZaznam(index);
+                } else {
+                    alert('pojištěnec NEBYL vymazán!')
+                    window.location.reload();
+                }
+                
             }
-        })
+        )
 //nefukční varianta, querySelectorAll nechce vidět .myButton, a getElementsByClassNode zase nejede kvůli forEach
         // const dltBtn = document.querySelectorAll(".myButton");
         // console.log(dltBtn);
@@ -64,8 +78,6 @@ class Kartoteka {
         // })
     }
 
-
-
     vypisZaznamy() {
         let elVypis = this.vypisPojistence;
         elVypis.innerHTML = '';
@@ -73,7 +85,6 @@ class Kartoteka {
             let zapis = this.pojistenci[i]
             let capJmeno = zapis.jmeno.replace(zapis.jmeno[0], zapis.jmeno[0].toUpperCase()); // Velké písmeno u jména
             let capPrijmeni = zapis.prijmeni.replace(zapis.prijmeni[0], zapis.prijmeni[0].toUpperCase()); // Velké písmeno u příjmení
-            
              elVypis.innerHTML += `<tr><td>${capJmeno} ${capPrijmeni}</td><td>${zapis.tel}</td><td>${this.ageCalculator(zapis.vek)}</td><td>${zapis.datumVstupu}</td><td><button data-index="${i}" class="myButton btn btn-outline-danger btn-sm">X</button></td></tr>`; 
         }
 
@@ -96,15 +107,19 @@ class Kartoteka {
             // console.log(year);
             //dopočet věku - zrozeni křemíku :-)
             let age = Math.abs(year - 1970);
-            
-            //display the calculated age
             return age
         }}
 
+        addGlobalEventListener(type, selector, callback) { // všeobecná funkce pro nastavení EventListeneru
+            document.addEventListener(type, e => {
+                if(e.target.matches(selector)) {
+                    callback(e)
+                }
+            })
+        }
 
-        vymazZaznam(m) {
-            console.log(m)
-            this.pojistenci.splice(m, 1);
+        vymazZaznam(index) {
+            this.pojistenci.splice(index, 1);
             localStorage.setItem("pojistenci", JSON.stringify(this.pojistenci));
             this.vypisZaznamy();
         }
