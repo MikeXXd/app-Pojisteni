@@ -52,3 +52,6 @@ form legend{
     padding: 0;
     width: 40px;
 }
+.dltBtnActive {
+    font-weight: 700;
+}

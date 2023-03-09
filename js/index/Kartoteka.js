@@ -6,6 +6,7 @@ class Kartoteka {
         const zaznamyZeStorage = localStorage.getItem("pojistenci"); // stahování záznamů, pokud záznamy neexistují, bude mít proměnná hodnotu null
         this.pojistenci = zaznamyZeStorage ? JSON.parse(zaznamyZeStorage) : []; /* ternálním operátorem vybereme záznamy, pokud žádné  v lS nejsou = null, načte se prázdné pole */
 
+        this.statusMazani = false
         this.jmenoInput = document.getElementById("input-jmeno");
         this.prijmeniInput = document.getElementById("input-prijmeni");
         this.vekInput = document.getElementById("input-vek");
@@ -13,6 +14,7 @@ class Kartoteka {
         this.ulozitButton = document.getElementById("button-ulozit");
         this.vypisPojistence = document.getElementById("pojistenci-seznam");
         this.aktivacniDltBtn = document.getElementById("activacni-dlt-btn");
+        this.razeniJmenaBtn = document.getElementById("razeni-jmena-btn");
         
         this.obsluhaUdalosti();
     }
@@ -32,10 +34,6 @@ class Kartoteka {
                 const pojistenec = new Pojistenec(this.jmenoInput.value, this.prijmeniInput.value, this.vekInput.value, this.telefonInput.value);
                 this.pojistenci.push(pojistenec); // na konec pole pojistenci se přidá nový objekt pojistenec
                 localStorage.setItem("pojistenci", JSON.stringify(this.pojistenci)); /* nově  */
-                // this.jmenoInput.value = '';
-                // this.prijmeniInput.value = '';
-                // this.vekInput.value = '';
-                // this.telefonInput.value = '';
                 this.vypisZaznamy();
                 
             
@@ -45,11 +43,14 @@ class Kartoteka {
         this.aktivacniDltBtn.onclick = () => {
             if (this.aktivacniDltBtn.innerText === "OFF") {
                 alert("Pozor, byla AKTIVOVÁNA tlačítka, mazání pojištěnců!!!");
-                this.aktivacniDltBtn.innerText = "ON !";
+                this.aktivacniDltBtn.innerText = "ON";
+                this.aktivacniDltBtn.classList = "btn btn-outline-danger dltBtnActive"
+                this.statusMazani = true;
                 this.vypisZaznamy();
             } else {
-                alert("Tlačítka mazání pojištěnců byla DEAKTIVOVÁNA");
                 this.aktivacniDltBtn.innerText = "OFF";
+                this.aktivacniDltBtn.classList = "btn btn-outline-secondary"
+                this.statusMazani = false;
                 this.vypisZaznamy();
             }
         }
@@ -76,6 +77,10 @@ class Kartoteka {
         // this.vymazZaznam(index);
         //     })
         // })
+        this.razeniJmenaBtn.onclick = () => {
+            
+        }
+
     }
 
     vypisZaznamy() {
@@ -85,7 +90,7 @@ class Kartoteka {
             let zapis = this.pojistenci[i]
             let capJmeno = zapis.jmeno.replace(zapis.jmeno[0], zapis.jmeno[0].toUpperCase()); // Velké písmeno u jména
             let capPrijmeni = zapis.prijmeni.replace(zapis.prijmeni[0], zapis.prijmeni[0].toUpperCase()); // Velké písmeno u příjmení
-             elVypis.innerHTML += `<tr><td>${capJmeno} ${capPrijmeni}</td><td>${zapis.tel}</td><td>${this.ageCalculator(zapis.vek)}</td><td>${zapis.datumVstupu}</td><td><button data-index="${i}" class="myButton btn btn-outline-danger btn-sm">X</button></td></tr>`; 
+             elVypis.innerHTML += `<tr><td>${capJmeno} ${capPrijmeni}</td><td>${zapis.tel}</td><td>${this.ageCalculator(zapis.vek)}</td><td>${zapis.datumVstupu}</td><td><button data-index="${i}" ${this.aktivaceButtonuMazaniUPojistencu()}>X</button></td></tr>`; 
         }
 
     }
@@ -122,6 +127,15 @@ class Kartoteka {
             this.pojistenci.splice(index, 1);
             localStorage.setItem("pojistenci", JSON.stringify(this.pojistenci));
             this.vypisZaznamy();
+        }
+
+        aktivaceButtonuMazaniUPojistencu() { 
+            if (!this.statusMazani) {
+                return "class='myButton btn btn-outline-secondary btn-sm' disabled role='button' aria-disabled='true'"
+            } else {
+                return "class='myButton btn btn-outline-danger btn-sm dltBtnActive' role='button' aria-disabled='false'"
+            }
+
         }
     
 }
