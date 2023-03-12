@@ -55,3 +55,7 @@ form legend{
 .dltBtnActive {
     font-weight: 700;
 }
+#razeni-prijmeni-btn:hover, #razeni-jmena-btn:hover, #razeni-datum-vstupu-btn:hover, #razeni-vek-btn:hover {
+    color: #2596be;
+    
+}
